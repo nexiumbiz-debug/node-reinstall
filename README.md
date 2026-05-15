@@ -55,6 +55,12 @@ Preview the cleanup before deleting anything:
 node-reinstall.bat --dry-run
 ```
 
+Run the non-destructive Windows smoke checks:
+
+```
+test\windows-smoke.bat
+```
+
 Run the Windows re-installer:
 
 ```

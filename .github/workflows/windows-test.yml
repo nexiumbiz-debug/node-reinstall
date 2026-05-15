@@ -14,21 +14,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Show help
+      - name: Run Windows smoke checks
         shell: cmd
-        run: call node-reinstall.bat --help
-
-      - name: Show version
-        shell: cmd
-        run: call node-reinstall.bat --version
-
-      - name: Dry-run reinstall flow
-        shell: cmd
-        run: call node-reinstall.bat --dry-run --force 20.11.1
-
-      - name: Unknown options fail
-        shell: cmd
-        run: |
-          call node-reinstall.bat --not-a-real-option
-          if not errorlevel 1 exit /b 1
-          exit /b 0
+        run: call test\windows-smoke.bat

@@ -2,3 +2,4 @@
 README.md text eol=lf
 .github/workflows/*.yml text eol=lf
 node-reinstall.bat text eol=crlf
+test/*.bat text eol=crlf
