@@ -1,0 +1,34 @@
+name: Windows test
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  batch-smoke:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Show help
+        shell: cmd
+        run: call node-reinstall.bat --help
+
+      - name: Show version
+        shell: cmd
+        run: call node-reinstall.bat --version
+
+      - name: Dry-run reinstall flow
+        shell: cmd
+        run: call node-reinstall.bat --dry-run --force 20.11.1
+
+      - name: Unknown options fail
+        shell: cmd
+        run: |
+          call node-reinstall.bat --not-a-real-option
+          if not errorlevel 1 exit /b 1
+          exit /b 0
